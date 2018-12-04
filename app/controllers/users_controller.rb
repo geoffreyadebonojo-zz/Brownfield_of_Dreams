@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+    if current_user
+      @user_dashboard_data = UserDashboardFacade.new
+    end
   end
 
   def new

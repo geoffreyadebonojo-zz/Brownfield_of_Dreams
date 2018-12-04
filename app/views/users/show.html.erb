@@ -10,4 +10,21 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <section class="github-title">
+    <h1>GitHub Links</h1>
+  </section>
+
+    <% @user_dashboard_data.repo_obj.each do |data| %>
+    <section class="github-repo-links">
+
+    <p>
+      <a href="<%= data.url%>">
+        <%= data.name %>
+      </a>
+    </p>
+  </section>
+  <% end %>
+  
+
+
 </section>
