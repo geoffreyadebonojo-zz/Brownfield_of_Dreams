@@ -11,10 +11,10 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section class="github-title">
+   <% if current_user.token %>
+
     <h1>GitHub Links</h1>
   </section>
-
-    <% if current_user.token %>
       <% @facade.repo_obj.each do |data| %>
       <section class="github-repo-links">
 
