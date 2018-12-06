@@ -11,19 +11,21 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section class="github-title">
+   <% if current_user.token %>
+
     <h1>GitHub Links</h1>
   </section>
+      <% @facade.repo_obj.each do |data| %>
+      <section class="github-repo-links">
 
-    <% @facade.repo_obj.each do |data| %>
-    <section class="github-repo-links">
-
-    <p>
-      <a href="<%= data.url%>">
-        <%= data.name %>
-      </a>
-    </p>
-  </section>
-  <% end %>
+      <p>
+        <a href="<%= data.url%>">
+          <%= data.name %>
+        </a>
+      </p>
+      </section>
+      <% end %>
+    <% end %>
 
 
 
