@@ -4,8 +4,6 @@ describe "User visits the dashboard page" do
 
   it "sees links to github repos" do
 
-    stub_request(:get, "https://api.github.com/user/repos").to_return(body: File.read("./spec/fixtures/user_data.json"))
-
     user = create(:user, role: 0)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -19,13 +17,14 @@ describe "User visits the dashboard page" do
 
     expect(page).to have_css(".github-repo-links", count: 5)
 
-    # VCR.use_cassette("features/user_sees_github_section_with_5_repos") do
+    expect(page).to have_content("2win_playlist")
 
-    # binding.pry
-    expect(page).to have "2win_playlist"
+  end
 
-    expect(current_path).to eq("/geoffreyadebonojo/2win_playlist")
+  it "doesn't display a section if a user lacks github token" do 
+    user = create(:user, role: 0)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    # end
+
   end
 end

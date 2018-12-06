@@ -1,4 +1,5 @@
-requie 'webmock/rspec'
+
+# require 'webmock/rspec'
 
 
 RSpec.configure do |config|
