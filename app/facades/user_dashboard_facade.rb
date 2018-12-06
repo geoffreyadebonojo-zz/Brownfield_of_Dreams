@@ -1,7 +1,13 @@
 class UserDashboardFacade
   def initialize(user)
     @user = user
-    @key = "token #{@user.api_keys.first.key}"
+    @key = key
+  end
+
+  def key
+    if @user.token
+      @key = "token #{@user.token}"
+    end
   end
 
   def repo_obj

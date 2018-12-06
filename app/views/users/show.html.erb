@@ -14,16 +14,18 @@
     <h1>GitHub Links</h1>
   </section>
 
-    <% @facade.repo_obj.each do |data| %>
-    <section class="github-repo-links">
+    <% if current_user.token %>
+      <% @facade.repo_obj.each do |data| %>
+      <section class="github-repo-links">
 
-    <p>
-      <a href="<%= data.url%>">
-        <%= data.name %>
-      </a>
-    </p>
-  </section>
-  <% end %>
+      <p>
+        <a href="<%= data.url%>">
+          <%= data.name %>
+        </a>
+      </p>
+      </section>
+      <% end %>
+    <% end %>
 
 
 
