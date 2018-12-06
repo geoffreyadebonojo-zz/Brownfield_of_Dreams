@@ -1,12 +1,10 @@
 class UserDashboardFacade
   def initialize(user)
     @user = user
-    binding.pry
-    @key = @user.api_key.key
+    @key = "token #{@user.api_keys.first.key}"
   end
 
   def repo_obj
-    binding.pry
     get_json.map do |h|
       Repo.new(h)
     end[0..4]
@@ -18,7 +16,7 @@ class UserDashboardFacade
     @response ||= conn.get("/user/repos")
     @parsed ||= JSON.parse(@response.body, symbolize_names: true)
   end
-  
+
   def conn
     Faraday.new(:url => 'https://api.github.com') do |f|
       f.headers['Authorization'] = @key
