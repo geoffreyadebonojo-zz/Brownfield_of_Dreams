@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def show
-    # if current_user
+    if current_user
       @facade = UserDashboardFacade.new(current_user)
-    # end
+    end
   end
 
   def new

@@ -10,23 +10,39 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <section class="github-title">
-    <h1>GitHub Links</h1>
-  </section>
 
-    <% if current_user.token %>
-      <% @facade.repo_obj.each do |data| %>
+  <% if current_user.token %>
+
+    <section class="github-title">
+      <h1>GitHub Links</h1>
+    </section>
+
+
+    <% @facade.repos(5).each do |repo| %>
       <section class="github-repo-links">
 
       <p>
-        <a href="<%= data.url%>">
-          <%= data.name %>
+        <a href="<%= repo.url%>">
+          <%= repo.name %>
         </a>
       </p>
       </section>
-      <% end %>
     <% end %>
 
+    <section>
+      <h1>Followers</h1>
+    </section>
+
+
+    <% @facade.followers.each do |follower| %>
+      <p>
+        <a href="<%= follower.url %>">
+        <%= follower.name %>
+        </a>
+      </p>
+    <% end %>
+
+  <% end %>
 
 
 </section>
