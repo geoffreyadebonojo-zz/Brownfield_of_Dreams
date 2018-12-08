@@ -16,11 +16,8 @@
     <section class="github-title">
       <h1>GitHub Links</h1>
     </section>
-
-
     <% @facade.repos(5).each do |repo| %>
       <section class="github-repo-links">
-
       <p>
         <a href="<%= repo.url%>">
           <%= repo.name %>
@@ -32,12 +29,21 @@
     <section>
       <h1>Followers</h1>
     </section>
-
-
     <% @facade.followers.each do |follower| %>
       <p>
         <a href="<%= follower.url %>">
         <%= follower.name %>
+        </a>
+      </p>
+    <% end %>
+
+    <section>
+      <h1>Following</h1>
+    </section>
+    <% @facade.following.each do |following| %>
+      <p>
+        <a href="<%= following.url %>">
+          <%= following.name %>
         </a>
       </p>
     <% end %>

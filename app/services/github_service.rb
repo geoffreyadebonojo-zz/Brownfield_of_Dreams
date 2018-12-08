@@ -4,6 +4,10 @@ class GithubService
     @key = token
   end
 
+  def following
+    get_following_json
+  end
+
   def followers
     get_followers_json
   end
@@ -13,6 +17,11 @@ class GithubService
   end
 
   private
+
+  def get_following_json
+    @following_response ||= conn.get("/user/following")
+    @following_parsed ||= JSON.parse(@following_response.body, symbolize_names: true)
+  end
 
   def get_followers_json
     @followers_response ||= conn.get("/user/followers")
