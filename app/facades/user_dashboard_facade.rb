@@ -10,6 +10,7 @@ class UserDashboardFacade
   def key
     if @user
       if @user.token
+        binding.pry
         @key = "token #{@user.token}"
       end
     end

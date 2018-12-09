@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
@@ -27,6 +28,11 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+
+  get "/auth/:provider/callback", to: "github/sessions#create"
+
+  get "auth/failure", to: redirect('/')
+  root to: "sessions#new"
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
