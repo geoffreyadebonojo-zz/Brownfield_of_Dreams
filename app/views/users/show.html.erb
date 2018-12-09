@@ -10,7 +10,9 @@
 
   <% if !current_user.token %>
     <h1>Sign In With Github</h1>
+    <div id="button-wrapper">
     <%= link_to 'GitHub', '/auth/github' %>
+    </div>
   <% end %>
 
   <section>
@@ -39,7 +41,10 @@
       <p>
         <a href="<%= follower.url %>">
         <%= follower.name %>
-        </a>
+        <% f = User.where(uid: follower.uid).pluck(:uid)[0] %>
+        <% if f%>
+          <a href="#">ADD FRIEND</a>
+        <% end %>
       </p>
     <% end %>
 
@@ -50,6 +55,9 @@
       <p>
         <a href="<%= following.url %>">
           <%= following.name %>
+          <%= following.uid %>
+          
+        <a href="#">ADD FRIEND</a>          
         </a>
       </p>
     <% end %>
