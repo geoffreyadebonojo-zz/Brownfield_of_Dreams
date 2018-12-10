@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+
+  has_many :friendships
+  has_many :friends, through: :friendships
+
+  has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship'
+  
+  # has_many :friends, through: :friendships, source: :user
+
+
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -11,7 +20,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def from_omniauth(auth)
-    # self.uid = auth["uid"]
+    self.uid = auth["uid"]
     self.provider = auth.provider
     self.token = auth["credentials"]["token"]
     self.save

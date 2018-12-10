@@ -42,7 +42,7 @@
         <a href="<%= follower.url %>">
         <%= follower.name %>
         <% f = User.where(uid: follower.uid).pluck(:uid)[0] %>
-        <% if f%>
+        <% if f %>
           <a href="#">ADD FRIEND</a>
         <% end %>
       </p>
@@ -55,12 +55,18 @@
       <p>
         <a href="<%= following.url %>">
           <%= following.name %>
-          <%= following.uid %>
-          
-        <a href="#">ADD FRIEND</a>          
-        </a>
+        <% f = User.where(uid: following.uid).pluck(:uid)[0] %>
+        <% if f %>
+          <a href="#">ADD FRIEND</a> 
+        <% end %>         
       </p>
     <% end %>
+
+    <section>
+      <h1>Friends</h1>
+    </section>
+
+    
 
   <% end %>
 
