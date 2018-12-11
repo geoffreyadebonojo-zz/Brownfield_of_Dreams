@@ -34,4 +34,9 @@ class UserDashboardFacade
     return repos_array[0...quantity]
   end
 
+  def friends
+    @ids = Friendship.where(user_id: @user.id).pluck(:friend_id)
+    User.where(id: @ids)
+  end
+
 end

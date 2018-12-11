@@ -40,10 +40,12 @@
     <% @facade.followers.each do |follower| %>
       <p>
         <a href="<%= follower.url %>">
-        <%= follower.name %>
+          <%= follower.name %>
+        </a>
         <% f = User.where(uid: follower.uid).pluck(:uid)[0] %>
         <% if f %>
-          <a href="#">ADD FRIEND</a>
+          <%= button_to 'Add Friend', friendships_path(follower.uid) %>
+          
         <% end %>
       </p>
     <% end %>
@@ -55,18 +57,24 @@
       <p>
         <a href="<%= following.url %>">
           <%= following.name %>
+        </a>
         <% f = User.where(uid: following.uid).pluck(:uid)[0] %>
         <% if f %>
-          <a href="#">ADD FRIEND</a> 
+          <%= button_to 'Add Friend', friendships_path(following.uid) %>
         <% end %>         
       </p>
     <% end %>
 
-    <section>
-      <h1>Friends</h1>
-    </section>
+      <%# binding.pry %>
+      <% if @facade.friends.first %>
+      <section>
+        <h1>Friends</h1>
+      </section>
+      <% @facade.friends.each do |friend| %>
+        <%= friend.first_name %>
+      <% end %>
+    <% end %>
 
-    
 
   <% end %>
 
