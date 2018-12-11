@@ -18,22 +18,14 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-<<<<<<< HEAD
 
   <% if current_user.token %>
 
-    <section class="github-title">
-      <h1>GitHub Links</h1>
-    </section>
-    <% @facade.repos(5).each do |repo| %>
-=======
   <section class="github-title">
-   <% if current_user.token %>
-
     <h1>GitHub Links</h1>
   </section>
-      <% @facade.repo_obj.each do |data| %>
->>>>>>> dfe90a4209a7edbb36906c7a386ec12c391cb114
+  
+    <% @facade.repos(5).each do |repo| %>
       <section class="github-repo-links">
       <p>
         <a href="<%= repo.url%>">
@@ -46,17 +38,18 @@
     <section>
       <h1>Followers</h1>
     </section>
-      <% @facade.followers.each do |follower| %>
-        <p>
-          <a href="<%= follower.url %>">
-            <%= follower.name %>
-          </a>
-          <% u = User.where(uid: follower.uid) %>
-          <% if u.pluck(:uid)[0] && !@facade.friends.include?(u.first) %>
-            <%= button_to 'Add Friend', friendships_path(follower.uid) %>
-          <% end %>
-        </p>
-      <% end %>
+    <% @facade.followers.each do |follower| %>
+      <p>
+        <a href="<%= follower.url %>">
+          <%= follower.name %>
+        </a>
+        <% u = User.where(uid: follower.uid) %>
+        <% if u.pluck(:uid)[0] && !@facade.friends.include?(u.first) %>
+          <%= button_to 'Add Friend', friendships_path(follower.uid) %>
+        <% end %>
+      </p>
+    <% end %>
+
     <section>
       <h1>Following</h1>
     </section>
@@ -68,12 +61,11 @@
           <% u = User.where(uid: following.uid) %>
           <% if u.pluck(:uid)[0] && !@facade.friends.include?(u.first) %>
           <%= button_to 'Add Friend', friendships_path(following.uid) %>
-        <% end %>         
+        <% end %>
       </p>
     <% end %>
 
-      <%# binding.pry %>
-      <% if @facade.friends.first %>
+    <% if @facade.friends.first %>
       <section>
         <h1>Friends</h1>
       </section>

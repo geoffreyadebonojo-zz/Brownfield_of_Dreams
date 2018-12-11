@@ -19,9 +19,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)    
+    user = User.find(current_user.id)
     auth = request.env["omniauth.auth"]
-    binding.pry
     user.from_omniauth(auth)
     redirect_to dashboard_path
   end
