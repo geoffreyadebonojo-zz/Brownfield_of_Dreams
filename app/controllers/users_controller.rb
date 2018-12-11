@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
-    # if current_user
-      @facade = UserDashboardFacade.new(current_user)
-    # end
+    @facade = UserDashboardFacade.new(current_user)
   end
 
   def new
@@ -18,6 +16,14 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def update
+    user = User.find(current_user.id)    
+    auth = request.env["omniauth.auth"]
+    binding.pry
+    user.from_omniauth(auth)
+    redirect_to dashboard_path
   end
 
   private
