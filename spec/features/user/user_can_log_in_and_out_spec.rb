@@ -4,7 +4,6 @@ describe 'User' do
   it 'user can sign in' do
 
     user = create(:user)
-    # key = create(:api_key, user: user)
 
     visit '/'
 
