@@ -18,6 +18,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+<<<<<<< HEAD
 
   <% if current_user.token %>
 
@@ -25,6 +26,14 @@
       <h1>GitHub Links</h1>
     </section>
     <% @facade.repos(5).each do |repo| %>
+=======
+  <section class="github-title">
+   <% if current_user.token %>
+
+    <h1>GitHub Links</h1>
+  </section>
+      <% @facade.repo_obj.each do |data| %>
+>>>>>>> dfe90a4209a7edbb36906c7a386ec12c391cb114
       <section class="github-repo-links">
       <p>
         <a href="<%= repo.url%>">
