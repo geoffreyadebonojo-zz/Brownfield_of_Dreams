@@ -9,7 +9,7 @@
   </ul>
 
   <% if !current_user.token %>
-    <h1>Sign In With Github</h1>
+    <h1>Connect With Github</h1>
     <div id="button-wrapper">
     <%= link_to 'GitHub', '/auth/github' %>
     </div>
@@ -21,10 +21,10 @@
 
   <% if current_user.token %>
 
-  <section class="github-title">
-    <h1>GitHub Links</h1>
+  <section>
+    <h1 class="github-title">GitHub Links</h1>
   </section>
-  
+
     <% @facade.repos(5).each do |repo| %>
       <section class="github-repo-links">
       <p>
