@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-
 describe "User visits the dashboard page", :vcr do
-
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
   end
@@ -42,6 +40,7 @@ describe "User visits the dashboard page", :vcr do
     expect(page).to have_content("Followers")
     expect(page).to have_content("Following")
     expect(page).to have_button("Log Out")
+    expect(page).to_not have_button("Add Friend")
   end
 
   it 'allows user to add friend', :vcr do
