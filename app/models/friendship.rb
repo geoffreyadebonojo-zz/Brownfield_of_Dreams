@@ -9,7 +9,6 @@ class Friendship < ApplicationRecord
 
   def realism
     return unless user_id == friend_id
-    errors.add :user, "Don't follow yourself"
   end
 
 end
