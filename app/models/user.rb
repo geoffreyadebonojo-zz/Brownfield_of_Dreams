@@ -4,12 +4,10 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship'
   has_many :friends, through: :friendships
 
-  
+
 
   has_many :user_videos
   has_many :videos, through: :user_videos
-
-  has_many :api_keys
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password, on: :create
