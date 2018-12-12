@@ -7,12 +7,11 @@ class FriendshipsController < ApplicationController
     f.user_id = user.id
     f.friend_id = friend.id
     f.save
-
-    # e = Friendship.new
-    # e.user_id = friend.id
-    # e.friend_id = user.id
-    # e.save
-    redirect_to dashboard_path
+    if f.save
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Friend does not exist"
+    end
   end
 
 end
