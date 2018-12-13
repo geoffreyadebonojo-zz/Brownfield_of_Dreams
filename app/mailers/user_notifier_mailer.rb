@@ -1,6 +1,6 @@
 class UserNotifierMailer < ApplicationMailer
 
-  def inform(email)
+  def activate(email)
     mail(to: email, subject: "Activate Your Account")
   end
 

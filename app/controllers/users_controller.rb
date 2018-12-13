@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      
-      UserNotifierMailer.inform(current_user.email).deliver_now
+
+      UserNotifierMailer.activate(current_user.email).deliver_now
       flash[:notice] = "Email Sent"
 
       redirect_to dashboard_path
@@ -28,6 +28,13 @@ class UsersController < ApplicationController
     user.from_omniauth(auth)
     redirect_to dashboard_path
   end
+
+ def activate
+   user = User.find(current_user.id)
+   user.activated = true
+   user.save
+ end
+
 
   private
 
