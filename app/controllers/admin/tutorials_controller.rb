@@ -24,13 +24,6 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
-  def delete
-    tutorial = Tutorial.find(params[:id])
-    require "pry"; binding.pry
-    tutorial.destroy
-    redirect_to admin_dashboard_path
-  end
-
   private
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
