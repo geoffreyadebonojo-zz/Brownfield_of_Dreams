@@ -4,6 +4,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+
   end
 
   def new

@@ -1,4 +1,4 @@
-prework_tutorial_data = {
+ prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
   "description"=>"Videos for prework.",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
@@ -116,4 +116,3 @@ m3_tutorial.videos.create!({
 })
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
-
