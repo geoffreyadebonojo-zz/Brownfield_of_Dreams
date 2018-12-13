@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'new user email activiation' do
-  it 'shows link to send email to activate their account' do
+describe 'new user email activation' do
+  it 'tells new user they have to activate their account' do
     visit '/'
     click_on "Register"
     expect(current_path).to eq(register_path)
@@ -19,5 +19,15 @@ describe 'new user email activiation' do
     expect(page).to have_content("Logged in as #{user.first_name}")
     expect(page).to have_content("This account has not yet been activated")
     expect(page).to_not have_content("Status: Active")
+  end
+
+  it 'shows activated user they are activated' do
+    user = create(:user, activated: true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit '/dashboard'
+
+    expect(page).to have_content("Logged in as #{user.first_name}")
+    expect(page).to_not have_content("This account has not yet been activated")
+    expect(page).to have_content("Status: Active")
   end
 end
