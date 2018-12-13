@@ -42,8 +42,7 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   post '/friendships', to: 'friendships#create'
-  post '/notification', to: 'notification#create'
-
+  post '/activation', to: 'activation#create'
 
   resources :users, only: [:new, :create, :update, :edit]
 
