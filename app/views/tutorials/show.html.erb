@@ -3,6 +3,7 @@
 <h1 id="message"></h1>
 <div class="col col-4">
   <h4>Videos</h4>
+  <% if @facade.videos %>
   <ul>
     <% @facade.videos.each do |video| %>
       <li>
@@ -10,8 +11,9 @@
       </li>
     <% end %>
   </ul>
+  <% end %>
 </div>
-
+<% if @facade.current_video %>
 <div class="col col-8">
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
@@ -67,3 +69,7 @@
 </div>
 
 </main>
+
+  <% else %>
+   Please Add Videos!
+<% end %>
