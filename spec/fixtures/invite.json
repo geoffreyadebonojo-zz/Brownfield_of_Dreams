@@ -1,0 +1,21 @@
+{
+        "login": "geoffreyadebonojo",
+        "id": 38126942,
+        "node_id": "MDQ6VXNlcjM4MTI2OTQy",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/38126942?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/geoffreyadebonojo",
+        "html_url": "https://github.com/geoffreyadebonojo",
+        "followers_url": "https://api.github.com/users/geoffreyadebonojo/followers",
+        "following_url": "https://api.github.com/users/geoffreyadebonojo/following{/other_user}",
+        "gists_url": "https://api.github.com/users/geoffreyadebonojo/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/geoffreyadebonojo/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/geoffreyadebonojo/subscriptions",
+        "organizations_url": "https://api.github.com/users/geoffreyadebonojo/orgs",
+        "repos_url": "https://api.github.com/users/geoffreyadebonojo/repos",
+        "events_url": "https://api.github.com/users/geoffreyadebonojo/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/geoffreyadebonojo/received_events",
+        "type": "User",
+        "site_admin": false,
+        "email": "geoffrey.adebonojo@gmail.com"
+    }
