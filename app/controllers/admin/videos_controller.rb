@@ -1,12 +1,4 @@
-class Admin::VideosController < Admin::BaseController
-  def edit
-    @video = Video.find(params[:video_id])
-  end
-
-  def update
-    video = Video.find(params[:id])
-    video.update(video_params)
-  end
+class Admin::VideosController < Admin::BaseController 
 
   def create
     begin
