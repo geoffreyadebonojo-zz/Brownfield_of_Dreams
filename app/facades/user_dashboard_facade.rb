@@ -1,10 +1,13 @@
 class UserDashboardFacade
-  attr_reader :github_service
+  attr_reader :github_service,
+              :youtube_service,
+              :user
 
   def initialize(user)
     @user = user
     @key = key
     @github_service = GithubService.new(@key)
+    @youtube_service = YoutubeService.new
   end
 
   def key
@@ -13,6 +16,10 @@ class UserDashboardFacade
         @key = "token #{@user.token}"
       end
     end
+  end
+
+  def videos
+    @user.bookmarks
   end
 
   def following
@@ -38,5 +45,4 @@ class UserDashboardFacade
     @ids = Friendship.where(user_id: @user.id).pluck(:friend_id)
     User.where(id: @ids)
   end
-
 end

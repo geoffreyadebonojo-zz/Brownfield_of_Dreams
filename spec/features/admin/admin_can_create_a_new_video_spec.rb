@@ -4,6 +4,8 @@ describe 'admin can create new video' do
   let(:tutorial) { create(:tutorial) }
   let(:admin)    { create(:admin) }
 
+
+####works in production not sure why this test does not passs
   xit 'must have position' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -21,6 +23,5 @@ describe 'admin can create new video' do
     within(first(".video")) do
       expect(page).to have_content("How to tie your shoes.")
     end
-
   end
 end

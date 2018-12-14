@@ -3,9 +3,6 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship'
   has_many :friends, through: :friendships
-
-
-
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -22,4 +19,9 @@ class User < ApplicationRecord
     self.save
   end
 
+  def bookmarks
+    self.videos.joins(:tutorial).
+    select('videos.title, videos.position, tutorials.title AS tutorial_title')
+    .order('tutorial_title, position')
+  end
 end
