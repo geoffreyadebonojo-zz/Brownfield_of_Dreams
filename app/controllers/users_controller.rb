@@ -29,11 +29,11 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
- def activate
-   user = User.find(current_user.id)
-   user.activated = true
-   user.save
- end
+  def activate
+    user = User.find(current_user.id)
+    user.activated = true
+    user.save
+  end
 
 
   private
