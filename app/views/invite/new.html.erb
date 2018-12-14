@@ -1,0 +1,5 @@
+<%= form_for '/invite' do |form| %>
+<%= form.label :handle, 'Github Handle' %>
+<%= form.email_field :handle %>
+<%= form.submit 'Send Invite' %>
+<% end %>
