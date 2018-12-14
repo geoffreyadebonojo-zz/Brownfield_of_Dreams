@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  get "/auth/:provider/callback", to: "users#update"
+  get "/auth/:provider/callback", to: "users#update", as :github_callback
 
   get "auth/failure", to: redirect('/')
   root to: "sessions#new"
