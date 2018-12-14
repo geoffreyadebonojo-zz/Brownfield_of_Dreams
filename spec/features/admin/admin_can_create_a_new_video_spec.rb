@@ -4,7 +4,7 @@ describe 'admin can create new video' do
   let(:tutorial) { create(:tutorial) }
   let(:admin)    { create(:admin) }
 
-  xit 'must have position' do
+  it 'must have position' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit edit_admin_tutorial_path(tutorial)
@@ -18,9 +18,6 @@ describe 'admin can create new video' do
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
-    within(first(".video")) do
-      expect(page).to have_content("How to tie your shoes.")
-    end
-
+    expect(page).to have_content("Unable to create video")
   end
 end
